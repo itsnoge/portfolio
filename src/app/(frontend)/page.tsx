@@ -1,17 +1,22 @@
-import Link from 'next/link';
-import { Title } from '@/components/Title';
-import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import { DESCRIPTION } from '@/constants';
 
 export default function HomePage() {
   return (
-    <section className='container mx-auto grid grid-cols-1 gap-6 p-12'>
-      <Title>ITSNOGE</Title>
-      <hr />
-      <Link href='/blog'>
-        <Button variant='outline' className='w-fit'>
-          Blog
-        </Button>
-      </Link>
+    <section className='container mx-auto'>
+      <div className='w-full flex-shrink-0'>
+        <Image
+          src='/logo-line-semibold.svg'
+          alt='ITSNOGE Logo'
+          width={750}
+          height={80}
+          className='h-auto w-full'
+          priority
+        />
+      </div>
+      <p className='mt-4 max-w-3xl rounded-2xl bg-gray-50 p-5 text-left text-lg font-medium text-pretty whitespace-pre-line'>
+        {DESCRIPTION}
+      </p>
     </section>
   );
 }

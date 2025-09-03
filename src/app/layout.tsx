@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Figtree, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { ReactNode } from 'react';
-import { AUTHOR, ROLE, SITE_NAME } from '@/constants';
+import { DESCRIPTION, ROLE, SITE_NAME } from '@/constants';
 
 const figtree = Figtree({
   variable: '--font-figtree',
@@ -15,9 +15,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${SITE_NAME} (${AUTHOR}) | ${ROLE}`,
-  description:
-    'Full-Stack Developer specializing in modern web applications. Discover projects, blog posts, and insights by Georges Nodari aka itsnoge.',
+  title: `${SITE_NAME} | ${ROLE}`,
+  description: `${DESCRIPTION}`,
+  icons: {
+    icon: '/logo-symbol.svg',
+    shortcut: '/logo-symbol.svg',
+  },
 };
 
 export default function RootLayout({

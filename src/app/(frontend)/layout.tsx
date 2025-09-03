@@ -15,7 +15,7 @@ export default async function FrontendLayout({
   return (
     <section className='min-h-screen bg-white'>
       <Header />
-      {children}
+      <main className='px-4 py-10'>{children}</main>
       <SanityLive />
       <DraftTools enabled={isEnabled} />
     </section>

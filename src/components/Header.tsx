@@ -161,7 +161,7 @@ export function Header() {
               </div>
               <SheetFooter className='flex flex-row items-center justify-between'>
                 <p className='text-xl font-semibold'>{CONTACT_EMAIL}</p>
-                <ul className='flex gap-4 font-medium'>
+                <ul className='mt-1 flex gap-4 text-sm font-medium uppercase'>
                   {SOCIALS.map((social) => (
                     <li key={social.href}>
                       <NavLink

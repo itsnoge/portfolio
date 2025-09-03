@@ -22,9 +22,10 @@ export type SocialItem = {
 };
 
 export const SOCIALS: SocialItem[] = [
-  { label: 'GitHub', href: 'https://github.com/itsnoge' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/georges-nodari' },
+  { label: 'GitHub', href: 'https://github.com/itsnoge' },
 ];
 
-// Email séparé
 export const CONTACT_EMAIL = 'hello@itsnoge.com';
+export const DESCRIPTION =
+  'Full-Stack Developer specializing in modern web applications — Java & React. Explore my projects, blog posts, and insights. Based in Brussels, working on-site and remotely. — Georges Nodari';
