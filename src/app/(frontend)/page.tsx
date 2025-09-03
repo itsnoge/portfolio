@@ -5,11 +5,11 @@ import { Button } from '@/components/ui/button';
 export default function HomePage() {
   return (
     <section className='container mx-auto grid grid-cols-1 gap-6 p-12'>
-      <Title>Layer Caker Home Page</Title>
+      <Title>ITSNOGE</Title>
       <hr />
-      <Link href='/posts'>
-        <Button variant='outline' className={'w-fit'}>
-          Posts
+      <Link href='/blog'>
+        <Button variant='outline' className='w-fit'>
+          Blog
         </Button>
       </Link>
     </section>
