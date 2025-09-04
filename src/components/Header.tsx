@@ -156,7 +156,7 @@ export function Header() {
 
                 <div className='relative hidden h-full w-full lg:col-span-1 lg:block'>
                   <Image
-                    src='/img-01.avif'
+                    src='/img-02.avif'
                     alt='ITSNOGE Logo'
                     sizes='(max-width: 1024px) 100vw, 50vw'
                     fill

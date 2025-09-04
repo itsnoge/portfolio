@@ -1,12 +1,13 @@
 import { defineQuery } from 'next-sanity';
 
 export const POSTS_QUERY =
-  defineQuery(`*[_type == "post" && defined(slug.current)]|order(publishedAt desc)[0...12]{
+  defineQuery(`*[_type == "post" && defined(slug.current)]|order(publishedAt desc){
   _id,
   title,
   slug,
   body,
   mainImage,
+  hoverImage,
   publishedAt,
   "categories": coalesce(
     categories[]->{
@@ -33,6 +34,7 @@ export const POST_QUERY =
   title,
   body,
   mainImage,
+  hoverImage,
   publishedAt,
   "categories": coalesce(
     categories[]->{
@@ -47,7 +49,53 @@ export const POST_QUERY =
     image
   },
   relatedPosts[]{
-    _key, // required for drag and drop
-    ...@->{_id, title, slug} // get fields from the referenced post
+    _key,
+    ...@->{_id, title, slug}
   }
 }`);
+
+export const PROJECTS_QUERY =
+  defineQuery(`*[_type == "project" && defined(slug.current)]|order(publishedAt desc){
+    _id,
+    title,
+    slug,
+    description,
+    mainImage,
+    hoverImage,
+    liveUrl,
+    repoUrl,
+    publishedAt,
+    categories,
+    stack,      
+    keyFeatures,
+    purpose,
+    challenge,
+    solution,
+  }`);
+
+export const PROJECTS_SLUGS_QUERY =
+  defineQuery(`*[_type == "project" && defined(slug.current)]{
+    "slug": slug.current
+  }`);
+
+export const PROJECT_QUERY =
+  defineQuery(`*[_type == "project" && slug.current == $slug][0]{
+    _id,
+    title,
+    description,
+    mainImage,
+    hoverImage,
+    liveUrl,
+    repoUrl,
+    publishedAt,
+    categories,
+    stack, 
+    keyFeatures,
+    purpose,
+    challenge,
+    solution,
+    relatedProjects[]{
+      _key, 
+      ...@->{_id, title, slug} 
+    }
+  }`);

@@ -1,53 +1,53 @@
 import Image from 'next/image';
-import { DESCRIPTION, TECHNOLOGIES } from '@/constants';
+import { DESCRIPTION } from '@/constants';
+import { Button } from '@/components/ui/button';
+import { sanityFetch } from '@/sanity/lib/live';
+import { PROJECTS_QUERY } from '@/sanity/lib/queries';
+import { ProjectCard } from '@/components/ProjectCard';
 
-import {
-  Marquee,
-  MarqueeContent,
-  MarqueeFade,
-  MarqueeItem,
-} from '@/components/ui/shadcn-io/marquee';
-
-export default function HomePage() {
+export default async function HomePage() {
+  const { data: projects } = await sanityFetch({ query: PROJECTS_QUERY });
   return (
-    <section className='container mx-auto'>
-      <div className='w-full flex-shrink-0'>
-        <Image
-          src='/logo-line-semibold.svg'
-          alt='ITSNOGE Logo'
-          width={750}
-          height={80}
-          className='h-auto w-full'
-          priority
-        />
-      </div>
-      <div className='mt-5 max-w-3xl rounded-2xl bg-gray-50 p-5'>
-        <span className='font-medium'>Introduction</span>
-        <p className='mt-5 text-left font-medium text-pretty whitespace-pre-line'>
-          {DESCRIPTION}
+    <div className='container mx-auto space-y-26'>
+      <section>
+        <div className='w-full flex-shrink-0'>
+          <Image
+            src='/logo-line-semibold.svg'
+            alt='ITSNOGE Logo'
+            width={750}
+            height={80}
+            className='h-auto w-full'
+            priority
+          />
+        </div>
+        <div className='mt-5 max-w-3xl rounded-2xl bg-gray-50 p-5'>
+          <span className='font-semibold'>Introduction</span>
+          <p className='mt-5 text-left text-sm text-pretty whitespace-pre-line'>
+            {DESCRIPTION}
+          </p>
+        </div>
+      </section>
+      <section className='h-screen'>
+        <div className='flex items-center justify-between'>
+          <p className='text-2xl font-semibold md:text-3xl lg:text-5xl'>
+            Selected Work.
+          </p>
+          <Button className='rounded-full text-xs font-medium'>
+            View all projects
+          </Button>
+        </div>
+        <p className='mt-5 max-w-sm text-sm text-pretty whitespace-pre-line'>
+          A curated selection of projects that showcase my passion for clean
+          code, modern technologies, and building purposeful digital
+          experiences.
         </p>
-      </div>
 
-      <Marquee className='mt-20'>
-        <MarqueeFade side='left' />
-        <MarqueeFade side='right' />
-        <MarqueeContent>
-          {TECHNOLOGIES.map((tech, index) => (
-            <MarqueeItem
-              className="h-32 w-32 flex items-center justify-center"
-              key={index}
-            >
-              <Image
-                src={tech.icon}
-                alt={tech.label}
-                width={80}
-                height={80}
-                className="object-contain"
-              />
-            </MarqueeItem>
+        <div className='mt-10 grid grid-cols-1 gap-2 md:grid-cols-2'>
+          {projects.map((project) => (
+            <ProjectCard key={project._id} {...project} />
           ))}
-        </MarqueeContent>
-      </Marquee>
-    </section>
+        </div>
+      </section>
+    </div>
   );
 }
