@@ -29,3 +29,22 @@ export const SOCIALS: SocialItem[] = [
 export const CONTACT_EMAIL = 'hello@itsnoge.com';
 export const DESCRIPTION =
   'Full-Stack Developer specializing in modern web applications — Java & React. Explore my projects, blog posts, and insights. Based in Brussels, working on-site and remotely. — Georges Nodari';
+
+export type TechItem = {
+  label: string;
+  icon: string;
+};
+
+export const TECHNOLOGIES: TechItem[] = [
+  { label: 'Java', icon: '/java.svg' },
+  { label: 'Spring Boot', icon: '/spring-boot.svg' },
+  { label: 'Docker', icon: '/docker.svg' },
+  { label: 'PostgreSQL', icon: '/postgresql.svg' },
+  { label: 'TypeScript', icon: '/typescript.svg' },
+  { label: 'React', icon: '/react.svg' },
+  { label: 'Next.js', icon: '/next-js.svg' },
+  { label: 'Node.js', icon: '/nodejs.svg' },
+  { label: 'Intellij-idea', icon: '/intellij-idea.svg' },
+  { label: 'Webstorm', icon: '/webstorm.svg' },
+  { label: 'Sanity', icon: '/sanity.svg' },
+];

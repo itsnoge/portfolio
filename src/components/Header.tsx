@@ -5,7 +5,13 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { CONTACT_EMAIL, LOCATION_COORDS, NAVIGATION, SOCIALS, TIMEZONE } from '@/constants';
+import {
+  CONTACT_EMAIL,
+  LOCATION_COORDS,
+  NAVIGATION,
+  SOCIALS,
+  TIMEZONE,
+} from '@/constants';
 import { NavLink } from '@/components/NavLink';
 import { usePathname } from 'next/navigation';
 import {
@@ -16,7 +22,7 @@ import {
   SheetFooter,
   SheetHeader,
   SheetTitle,
-  SheetTrigger
+  SheetTrigger,
 } from '@/components/ui/sheet';
 import { RollingText } from '@/components/RollingText';
 
@@ -59,7 +65,7 @@ export function Header() {
         <div>{time}</div>
       </div>
       <div className='flex items-center gap-4'>
-        <ul className='hidden gap-4 text-xs font-medium uppercase lg:flex lg:items-center'>
+        <ul className='hidden gap-4 text-sm font-medium lg:flex lg:items-center'>
           {NAVIGATION.map((item) => (
             <li key={item.href} className='group cursor-pointer'>
               <NavLink
@@ -76,7 +82,7 @@ export function Header() {
         </ul>
 
         <div className='flex gap-2'>
-          <Button className='rounded-full text-xs font-medium uppercase'>
+          <Button className='rounded-full text-sm font-medium'>
             Start a project
           </Button>
           <Sheet>
@@ -125,16 +131,16 @@ export function Header() {
                         <li key={item.href}>
                           <Link
                             href={item.href}
-                            className='group flex items-center justify-between transition-colors'
+                            className='group flex items-center justify-between'
                           >
                             <RollingText
-                              className='text-xl font-medium uppercase'
+                              className='text-xl font-semibold'
                               speed='slow'
                               text={item.label}
                               direction='up'
                             />
                             <RollingText
-                              className={`font-jetbrains-mono transition-colors ${
+                              className={`font-jetbrains-mono ${
                                 isActiveLink(item.href, pathname)
                                   ? 'text-foreground font-bold'
                                   : 'text-muted-foreground'
@@ -160,8 +166,8 @@ export function Header() {
                 </div>
               </div>
               <SheetFooter className='flex flex-row items-center justify-between'>
-                <p className='text-xl font-semibold'>{CONTACT_EMAIL}</p>
-                <ul className='mt-1 flex gap-4 text-sm font-medium uppercase'>
+                <p className='text-lg font-semibold'>{CONTACT_EMAIL}</p>
+                <ul className='mt-1 flex gap-4 text-sm font-medium'>
                   {SOCIALS.map((social) => (
                     <li key={social.href}>
                       <NavLink
