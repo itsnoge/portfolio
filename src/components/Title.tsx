@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react';
 
 export function Title(props: PropsWithChildren) {
   return (
-    <h1 className='max-w-3xl text-2xl font-semibold text-pretty text-slate-800 md:text-4xl lg:text-6xl'>
+    <h1 className='text-3xl leading-tight font-bold text-pretty md:text-5xl md:leading-snug lg:text-7xl lg:leading-snug'>
       {props.children}
     </h1>
   );

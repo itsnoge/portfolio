@@ -4,9 +4,11 @@ import { Button } from '@/components/ui/button';
 import { sanityFetch } from '@/sanity/lib/live';
 import { PROJECTS_QUERY } from '@/sanity/lib/queries';
 import { ProjectCard } from '@/components/ProjectCard';
+import Link from 'next/link';
 
 export default async function HomePage() {
   const { data: projects } = await sanityFetch({ query: PROJECTS_QUERY });
+  console.log(projects);
   return (
     <div className='container mx-auto space-y-26'>
       <section>
@@ -32,9 +34,11 @@ export default async function HomePage() {
           <p className='text-2xl font-semibold md:text-3xl lg:text-5xl'>
             Selected Work.
           </p>
-          <Button className='rounded-full text-xs font-medium'>
-            View all projects
-          </Button>
+          <Link href='/projects'>
+            <Button className='rounded-full text-xs font-medium'>
+              View all projects
+            </Button>
+          </Link>
         </div>
         <p className='mt-5 max-w-sm text-sm text-pretty whitespace-pre-line'>
           A curated selection of projects that showcase my passion for clean

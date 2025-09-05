@@ -72,7 +72,7 @@ export const projectType = defineType({
       ],
     }),
     defineField({
-      name: 'stack',
+      name: 'technologies',
       type: 'array',
       of: [
         defineArrayMember({

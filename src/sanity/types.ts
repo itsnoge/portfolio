@@ -49,7 +49,7 @@ export type Project = {
     _type: 'image';
   };
   categories?: Array<string>;
-  stack?: Array<string>;
+  technologies?: Array<string>;
   liveUrl?: string;
   repoUrl?: string;
   publishedAt?: string;
@@ -633,7 +633,7 @@ export type POST_QUERYResult = {
   }> | null;
 } | null;
 // Variable: PROJECTS_QUERY
-// Query: *[_type == "project" && defined(slug.current)]|order(publishedAt desc){    _id,    title,    slug,    description,    mainImage,    hoverImage,    liveUrl,    repoUrl,    publishedAt,    categories,    stack,          keyFeatures,    purpose,    challenge,    solution,  }
+// Query: *[_type == "project" && defined(slug.current)]|order(publishedAt desc){    _id,    title,    slug,    description,    mainImage,    hoverImage,    liveUrl,    repoUrl,    publishedAt,    categories,    technologies,          keyFeatures,    purpose,    challenge,    solution,  }
 export type PROJECTS_QUERYResult = Array<{
   _id: string;
   title: string | null;
@@ -669,7 +669,7 @@ export type PROJECTS_QUERYResult = Array<{
   repoUrl: string | null;
   publishedAt: string | null;
   categories: Array<string> | null;
-  stack: Array<string> | null;
+  technologies: Array<string> | null;
   keyFeatures: Array<string> | null;
   purpose: Array<
     | {
@@ -780,7 +780,7 @@ export type PROJECTS_SLUGS_QUERYResult = Array<{
   slug: string | null;
 }>;
 // Variable: PROJECT_QUERY
-// Query: *[_type == "project" && slug.current == $slug][0]{    _id,    title,    description,    mainImage,    hoverImage,    liveUrl,    repoUrl,    publishedAt,    categories,    stack,     keyFeatures,    purpose,    challenge,    solution,    relatedProjects[]{      _key,       ...@->{_id, title, slug}     }  }
+// Query: *[_type == "project" && slug.current == $slug][0]{    _id,    title,    description,    mainImage,    hoverImage,    liveUrl,    repoUrl,    publishedAt,    categories,    technologies,     keyFeatures,    purpose,    challenge,    solution,    relatedProjects[]{      _key,       ...@->{_id, title, slug}     }  }
 export type PROJECT_QUERYResult = {
   _id: string;
   title: string | null;
@@ -815,7 +815,7 @@ export type PROJECT_QUERYResult = {
   repoUrl: string | null;
   publishedAt: string | null;
   categories: Array<string> | null;
-  stack: Array<string> | null;
+  technologies: Array<string> | null;
   keyFeatures: Array<string> | null;
   purpose: Array<
     | {
@@ -934,8 +934,8 @@ declare module '@sanity/client' {
     '*[_type == "post" && defined(slug.current)]|order(publishedAt desc){\n  _id,\n  title,\n  slug,\n  body,\n  mainImage,\n  hoverImage,\n  publishedAt,\n  "categories": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  }\n}': POSTS_QUERYResult;
     '*[_type == "post" && defined(slug.current)]{ \n  "slug": slug.current\n}': POSTS_SLUGS_QUERYResult;
     '*[_type == "post" && slug.current == $slug][0]{\n  _id,\n  title,\n  body,\n  mainImage,\n  hoverImage,\n  publishedAt,\n  "categories": coalesce(\n    categories[]->{\n      _id,\n      slug,\n      title\n    },\n    []\n  ),\n  author->{\n    name,\n    image\n  },\n  relatedPosts[]{\n    _key,\n    ...@->{_id, title, slug}\n  }\n}': POST_QUERYResult;
-    '*[_type == "project" && defined(slug.current)]|order(publishedAt desc){\n    _id,\n    title,\n    slug,\n    description,\n    mainImage,\n    hoverImage,\n    liveUrl,\n    repoUrl,\n    publishedAt,\n    categories,\n    stack,      \n    keyFeatures,\n    purpose,\n    challenge,\n    solution,\n  }': PROJECTS_QUERYResult;
+    '*[_type == "project" && defined(slug.current)]|order(publishedAt desc){\n    _id,\n    title,\n    slug,\n    description,\n    mainImage,\n    hoverImage,\n    liveUrl,\n    repoUrl,\n    publishedAt,\n    categories,\n    technologies,      \n    keyFeatures,\n    purpose,\n    challenge,\n    solution,\n  }': PROJECTS_QUERYResult;
     '*[_type == "project" && defined(slug.current)]{\n    "slug": slug.current\n  }': PROJECTS_SLUGS_QUERYResult;
-    '*[_type == "project" && slug.current == $slug][0]{\n    _id,\n    title,\n    description,\n    mainImage,\n    hoverImage,\n    liveUrl,\n    repoUrl,\n    publishedAt,\n    categories,\n    stack, \n    keyFeatures,\n    purpose,\n    challenge,\n    solution,\n    relatedProjects[]{\n      _key, \n      ...@->{_id, title, slug} \n    }\n  }': PROJECT_QUERYResult;
+    '*[_type == "project" && slug.current == $slug][0]{\n    _id,\n    title,\n    description,\n    mainImage,\n    hoverImage,\n    liveUrl,\n    repoUrl,\n    publishedAt,\n    categories,\n    technologies, \n    keyFeatures,\n    purpose,\n    challenge,\n    solution,\n    relatedProjects[]{\n      _key, \n      ...@->{_id, title, slug} \n    }\n  }': PROJECT_QUERYResult;
   }
 }
