@@ -1,14 +1,9 @@
 import Image from 'next/image';
 import { DESCRIPTION } from '@/constants';
-import { Button } from '@/components/ui/button';
-import { sanityFetch } from '@/sanity/lib/live';
-import { PROJECTS_QUERY } from '@/sanity/lib/queries';
-import { ProjectCard } from '@/components/ProjectCard';
-import Link from 'next/link';
+import { SectionHeader } from '@/components/SectionHeader';
+import ProjectList from '@/components/ProjectList';
 
 export default async function HomePage() {
-  const { data: projects } = await sanityFetch({ query: PROJECTS_QUERY });
-  console.log(projects);
   return (
     <div className='container mx-auto space-y-26'>
       <section>
@@ -30,27 +25,14 @@ export default async function HomePage() {
         </div>
       </section>
       <section className='h-screen'>
-        <div className='flex items-center justify-between'>
-          <p className='text-2xl font-semibold md:text-3xl lg:text-5xl'>
-            Selected Work.
-          </p>
-          <Link href='/projects'>
-            <Button size='sm' className='rounded-full text-xs'>
-              View all projects
-            </Button>
-          </Link>
-        </div>
-        <p className='mt-5 max-w-sm text-sm text-pretty whitespace-pre-line'>
-          A curated selection of projects that showcase my passion for clean
-          code, modern technologies, and building purposeful digital
-          experiences.
-        </p>
+        <SectionHeader
+          title='Selected Work.'
+          description='A curated selection of projects that showcase my passion for clean code, modern technologies, and building purposeful digital experiences.'
+          buttonText='View more'
+          buttonLink='/projects'
+        />
 
-        <div className='mt-10 grid grid-cols-1 gap-2 md:grid-cols-2'>
-          {projects.map((project) => (
-            <ProjectCard key={project._id} {...project} />
-          ))}
-        </div>
+        <ProjectList />
       </section>
     </div>
   );

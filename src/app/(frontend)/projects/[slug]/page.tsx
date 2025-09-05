@@ -35,8 +35,8 @@ export default async function ProjectDetailsPage({
     notFound();
   }
   return (
-    <div>
+    <>
       <Project {...project} />
-    </div>
+    </>
   );
 }

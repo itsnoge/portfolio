@@ -25,7 +25,7 @@ export function Project(props: NonNullable<PROJECT_QUERYResult>) {
   } = props;
 
   return (
-    <section className='relative container mx-auto max-w-4xl py-10'>
+    <section className='relative container mx-auto max-w-4xl'>
       <Title>{title}</Title>
       <div className='mt-6 flex flex-col gap-5'>
         <ProjectDetails label='Overview'>
@@ -74,17 +74,13 @@ export function Project(props: NonNullable<PROJECT_QUERYResult>) {
           <div className='mt-6 flex flex-wrap items-center gap-3'>
             {liveUrl && (
               <Link href={liveUrl}>
-                <Button size='sm' className='rounded-full'>
-                  Live Preview
-                </Button>
+                <Button className='rounded-full'>Live Preview</Button>
               </Link>
             )}
 
             {repoUrl && (
               <Link href={repoUrl}>
-                <Button size='sm' className='rounded-full'>
-                  Source Code
-                </Button>
+                <Button className='rounded-full'>Source Code</Button>
               </Link>
             )}
           </div>
