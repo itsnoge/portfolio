@@ -35,7 +35,7 @@ export default async function HomePage() {
             Selected Work.
           </p>
           <Link href='/projects'>
-            <Button className='rounded-full text-xs font-medium'>
+            <Button size='sm' className='rounded-full text-xs'>
               View all projects
             </Button>
           </Link>

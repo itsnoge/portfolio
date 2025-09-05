@@ -5,6 +5,8 @@ import { ProjectDetails } from '@/components/ProjectDetails';
 import { ProjectImage } from '@/components/ProjectImage';
 import { PortableText } from 'next-sanity';
 import { components } from '@/sanity/portableTextComponents';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export function Project(props: NonNullable<PROJECT_QUERYResult>) {
   const {
@@ -18,6 +20,8 @@ export function Project(props: NonNullable<PROJECT_QUERYResult>) {
     purpose,
     challenge,
     solution,
+    liveUrl,
+    repoUrl,
   } = props;
 
   return (
@@ -25,7 +29,7 @@ export function Project(props: NonNullable<PROJECT_QUERYResult>) {
       <Title>{title}</Title>
       <div className='mt-6 flex flex-col gap-5'>
         <ProjectDetails label='Overview'>
-          <p className='text-balance'>{description}</p>
+          <p className='text-pretty'>{description}</p>
         </ProjectDetails>
 
         <div className='flex flex-col gap-2'>
@@ -65,6 +69,26 @@ export function Project(props: NonNullable<PROJECT_QUERYResult>) {
             </div>
           </ProjectDetails>
         </div>
+
+        {(liveUrl || repoUrl) && (
+          <div className='mt-6 flex flex-wrap items-center gap-3'>
+            {liveUrl && (
+              <Link href={liveUrl}>
+                <Button size='sm' className='rounded-full'>
+                  Live Preview
+                </Button>
+              </Link>
+            )}
+
+            {repoUrl && (
+              <Link href={repoUrl}>
+                <Button size='sm' className='rounded-full'>
+                  Source Code
+                </Button>
+              </Link>
+            )}
+          </div>
+        )}
       </div>
 
       {mainImage?.asset?._ref && (
@@ -91,7 +115,7 @@ export function Project(props: NonNullable<PROJECT_QUERYResult>) {
                 </>
               }
             >
-              <div className={`text-balance ${extraClass || ''}`}>
+              <div className={`text-pretty ${extraClass || ''}`}>
                 <PortableText
                   value={
                     Array.isArray(content)

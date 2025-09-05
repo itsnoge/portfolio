@@ -82,9 +82,7 @@ export function Header() {
         </ul>
 
         <div className='flex gap-2'>
-          <Button className='rounded-full text-sm font-medium'>
-            Start a project
-          </Button>
+          <Button className='rounded-full text-sm'>Start a project</Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button

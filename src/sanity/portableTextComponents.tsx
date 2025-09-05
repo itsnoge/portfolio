@@ -6,7 +6,7 @@ export const components: PortableTextComponents = {
   types: {
     image: (props) =>
       props.value?.asset?._ref ? (
-        <div className='relative my-2 h-[50vh] w-full overflow-hidden rounded-2xl sm:h-[60vh] md:h-[80vh]'>
+        <div className='relative my-2 h-[50vh] w-full overflow-hidden rounded-2xl bg-gray-100 sm:h-[60vh] md:h-[80vh]'>
           <Image
             src={urlFor(props.value)
               .quality(100)
@@ -15,7 +15,7 @@ export const components: PortableTextComponents = {
               .url()}
             alt={props.value.alt || ''}
             fill
-            className='object-cover'
+            className='rounded-2xl object-cover p-2'
             sizes='(max-width: 640px) 100vw, 100vw'
           />
         </div>
